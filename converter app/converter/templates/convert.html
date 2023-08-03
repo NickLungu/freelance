@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="form-container">
+        <h1>Image Processing App</h1>
+
+        <form action="/convert" method="POST" enctype="multipart/form-data" onsubmit="startConversion()">
+            <input type="file" name="image" accept="image/*" required>
+            <select name="format" required>
+                <option value="jpeg">JPEG</option>
+                <option value="png">PNG</option>
+                <option value="gif">GIF</option>
+            </select>
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if converted_image %}
+            <h2>Converted Image:</h2>
+            <a href="/download" download="converted_image.{{ format }}"><button>Download Converted Image</button></a>
+            <img class="converted-image" src="data:image/{{ format }};base64,{{ converted_image }}" alt="Converted Image">
+        {% endif %}
+    </div>
+{% endblock %}

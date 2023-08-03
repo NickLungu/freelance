@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="form-container">
+        <h1>Image Processing App</h1>
+
+        <form action="/resize" method="POST" enctype="multipart/form-data"">
+            <input type="file" name="image" accept="image/*" required>
+            <select name="side" required>
+                <option value="x">SIDE X</option>
+                <option value="y">SIDE Y</option>
+            </select>
+            <input name="px" value="px" type="number" placeholder="pixels">
+            <button type="submit">Resize</button>
+        </form>
+
+        {% if resized_image %}
+            <h2>Resized Image:</h2>
+            <a href="/download" download="resized_image.{{ format }}"><button>Download Resized Image</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

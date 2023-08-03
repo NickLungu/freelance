@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Processing App</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.gif">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                {% if request_path == '/convert' %}
+                    <li><a class="active" href="/convert">Converter</a></li>
+                {% else %}
+                    <li><a href="/convert">Converter</a></li>
+                {% endif %}
+
+                {% if request_path == '/resize' %}
+                    <li><a class="active" href="/resize">Resizer</a></li>
+                {% else %}
+                    <li><a href="/resize">Resizer</a></li>
+                {% endif %}
+
+                {% if request_path == '/about_us' %}
+                    <li class="active"><a href="/">About Us</a></li>
+                {% else %}
+                    <li><a href="/">About Us</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
